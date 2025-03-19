@@ -1,0 +1,14 @@
+services:
+    parseable:
+        ports:
+            - 8000:8000
+            - 8001:8001
+            - 8002:8002
+        volumes:
+            - /tmp/parseable/data:/parseable/data
+            - /tmp/parseable/staging:/parseable/staging
+        environment:
+            - P_FS_DIR=/parseable/data
+            - P_STAGING_DIR=/parseable/staging
+        image: containers.parseable.com/parseable/parseable:latest
+        command: parseable local-store

@@ -1,0 +1,38 @@
+lzc-sdk-version: "0.1"
+name: Parseable
+package: cloud.lazycat.app.parseable
+version: 1.7.4
+description: 一个开源日志存储和可观察性平台
+homepage: https://www.parseable.com/
+author: parseablehq
+application:
+  subdomain: parseable
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://parseable:8000/
+  ingress:
+    - protocol: tcp
+      port: 8001
+      service: parseable
+    - protocol: tcp
+      port: 8002
+      service: parseable
+services:
+  parseable:
+    image: registry.lazycat.cloud/czyt/parseable/parseable:68ec8880d4350a6f
+    environment:
+      - P_FS_DIR=/parseable/data
+      - P_STAGING_DIR=/parseable/staging
+    command: parseable local-store
+    binds:
+      - /lzcapp/var/data:/parseable/data
+      - /lzcapp/var/staging:/parseable/staging
+    setup_script: |
+    chown -R 10001:10001 /parseable/data
+    chown -R 10001:10001 /parseable/staging

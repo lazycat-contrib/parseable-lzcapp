@@ -1,0 +1,48 @@
+{
+  "name": "Parseable",
+  "package": "cloud.lazycat.app.parseable",
+  "description": "一个开源日志存储和可观察性平台",
+  "homepage": "https://www.parseable.com/",
+  "author": "parseablehq",
+  "app_features": [
+    "background_task",
+    "public_path"
+  ],
+  "subdomain": "parseable",
+  "version": "1.7.4",
+  "public_paths": [
+    "/"
+  ],
+  "iconPath": "icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "parseable_8000_8000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    },
+    "parseable_8001_8001": {
+      "use": true,
+      "type": "port",
+      "protocol": "tcp"
+    },
+    "parseable_8002_8002": {
+      "use": true,
+      "type": "port",
+      "protocol": "tcp"
+    }
+  },
+  "image_containers.parseable.com_parseable_parseable_latest": {
+    "originalImage": "containers.parseable.com/parseable/parseable:latest",
+    "pushTarget": "custom",
+    "newImageName": "registry.lazycat.cloud/czyt/parseable/parseable:68ec8880d4350a6f",
+    "timestamp": "2025-03-19T14:48:24.824Z"
+  },
+  "parseable_volume_/parseable/data_action": "emptyDir",
+  "parseable_volume_/parseable/data_location": "app_data",
+  "parseable_volume_/parseable/staging_action": "emptyDir",
+  "parseable_volume_/parseable/staging_location": "app_data"
+}

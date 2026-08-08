@@ -1,0 +1,52 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: parseable
+
+build:
+  run_buildscript: false
+  toolchains: []
+
+images:
+  - id: parseable
+    target: service
+    service: parseable
+    source: docker.io/parseable/parseable
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    create_if_missing: true
+    changelog_locales: [zh, en]
+    retry:
+      enabled: false
+      max_attempts: 3
+      initial_delay: 2s
+      max_delay: 30s
+    application:
+      language: zh
+      name: Parseable
+      source: https://github.com/lazycat-contrib/parseable-lzcapp
+      source_author: lazycat-contrib
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Parseable
+    summary: Parseable for LazyCat

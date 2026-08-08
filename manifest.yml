@@ -25,6 +25,7 @@ application:
       service: parseable
 services:
   parseable:
+  # parseable/parseable:v1.7.4
     image: registry.lazycat.cloud/czyt/parseable/parseable:68ec8880d4350a6f
     environment:
       - P_FS_DIR=/parseable/data

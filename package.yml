@@ -1,0 +1,13 @@
+package: cloud.lazycat.app.parseable
+version: 1.7.4
+name: Parseable
+description: 一个开源日志存储和可观察性平台
+homepage: https://www.parseable.com/
+author: parseablehq
+locales:
+  en:
+    name: Parseable
+    description: Open-source log storage and observability platform.
+  zh:
+    name: Parseable
+    description: 一个开源日志存储和可观察性平台。

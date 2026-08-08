@@ -18,8 +18,8 @@ application:
       service: parseable
 services:
   parseable:
-    # upstream: docker.io/parseable/parseable:v1.7.4
-    image: registry.lazycat.cloud/czyt/parseable/parseable:68ec8880d4350a6f
+    # upstream: docker.io/parseable/parseable:v2.8.0
+    image: registry.lazycat.cloud/czyt/parseable/parseable:c2eb2e378e49476e
     environment:
       - P_FS_DIR=/parseable/data
       - P_STAGING_DIR=/parseable/staging

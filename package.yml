@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.parseable
-version: 1.7.4
+version: 2.8.0
 name: Parseable
 description: 一个开源日志存储和可观察性平台
 homepage: https://www.parseable.com/

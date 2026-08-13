@@ -20,6 +20,7 @@ services:
   parseable:
     # upstream: docker.io/parseable/parseable:v2.8.0
     image: registry.lazycat.cloud/czyt/parseable/parseable:c2eb2e378e49476e
+    user: 1001
     environment:
       - P_FS_DIR=/parseable/data
       - P_STAGING_DIR=/parseable/staging
@@ -27,6 +28,3 @@ services:
     binds:
       - /lzcapp/var/data:/parseable/data
       - /lzcapp/var/staging:/parseable/staging
-    setup_script: |
-      chown -R 10001:10001 /parseable/data
-      chown -R 10001:10001 /parseable/staging
